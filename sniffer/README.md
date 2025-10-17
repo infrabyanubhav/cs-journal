@@ -12,20 +12,24 @@ A minimal ARP network scanner using Scapy that discovers devices on a subnet and
 ```bash
 source myenv/bin/activate
 ```
-2. Ensure dependencies are installed (Scapy is already in `myenv/`):
+2. Install dependencies:
 ```bash
+# Using requirements.txt (recommended)
+pip install -r sniffer/requirements.txt
+
+# Or install manually
 pip install scapy
 ```
 
 ### Usage
-- Run via script (recommended):
+- Run via script (recommended) from the project root:
 ```bash
-chmod +x sniff.sh
-sudo ./sniff.sh
+chmod +x sniffer/sniff.sh
+sudo sniffer/sniff.sh
 ```
 This will run the scanner in the background and write results to `sniffer/output.txt`.
 
-- Run directly with Python:
+- Run directly with Python from the project root:
 ```bash
 sudo myenv/bin/python sniffer/main.py > sniffer/output.txt 2>&1
 ```
@@ -50,4 +54,5 @@ IP: 192.168.1.35, MAC: 5e:d2:26:23:79:45
 
 ### Notes
 - `.gitignore` excludes the virtualenv and `sniffer/output.txt` from version control.
-# cs-journal
+- The script auto-detects the venv Python at `myenv/bin/python3` if available.
+- If the venv is missing, it falls back to your system `python3`.

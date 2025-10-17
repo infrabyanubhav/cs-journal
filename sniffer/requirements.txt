@@ -1,0 +1,4 @@
+# Packet Sniffer Dependencies
+# Core networking library for packet manipulation and network scanning
+scapy>=2.6.1
+
