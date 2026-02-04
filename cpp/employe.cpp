@@ -7,8 +7,9 @@ class employee{
     string emp_name;
 
     public:
-    employee(){
-        
+    employee(int emp_uid, string emp_name){
+        this->emp_uid=emp_uid;
+        this->emp_name=emp_name;
         cout<<"emloyee_id"<<"\t"<<emp_uid<<endl;
         cout<<"employee_name"<<"\t"<<emp_name<<endl;
 
@@ -20,8 +21,6 @@ class employee{
 
 
 int main(){
-    employee e1;
-    e1.emp_uid=12345;
-    e1.emp_name="Noni";
+    employee e1(12345,"Noni");
     return 0;
 }
