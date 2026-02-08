@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Create S3 bucket with versioning and SNS notification for stack events
+
+Parameters:
+  EmailAddress:
+    Type: String
+    Description: Enter your email address to receive stack notifications
+
+Resources:
+
+  IntelliPaatSNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: IntelliPaat-Stack-Notifications
+      Subscription:
+        - Protocol: email
+          Endpoint: !Ref EmailAddress
+
+  IntelliPaatS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: intellipaat-anubhav
+      VersioningConfiguration:
+        Status: Enabled
+
+Outputs:
+  SNSTopicArn:
+    Description: SNS Topic ARN for stack notifications
+    Value: !Ref IntelliPaatSNSTopic
+
+  BucketName:
+    Description: Created S3 bucket name
+    Value: !Ref IntelliPaatS3Bucket

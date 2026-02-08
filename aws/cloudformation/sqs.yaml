@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: CloudFormation template to create FIFO SQS Queue
+
+Resources:
+  IntelliPaatFIFOQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: IntelliPaatQueue.fifo
+      FifoQueue: true
+      ContentBasedDeduplication: true
+
+Outputs:
+  FIFOQueueURL:
+    Description: URL of FIFO Queue
+    Value: !Ref IntelliPaatFIFOQueue
+
+  FIFOQueueARN:
+    Description: ARN of FIFO Queue
+    Value: !GetAtt IntelliPaatFIFOQueue.Arn
